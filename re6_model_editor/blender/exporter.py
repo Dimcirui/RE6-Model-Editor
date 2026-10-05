@@ -502,13 +502,8 @@ def export_mod(filepath, collection, *, selectedOnly=False, visibleOnly=False, s
     remap = bytes.fromhex(collection.get(C.K_REMAP, '')) if collection.get(C.K_REMAP) else b''
     trailer = bytes.fromhex(collection.get(C.K_TRAILER, '')) if collection.get(C.K_TRAILER) else b''
     lod_dist = tuple(collection.get(C.K_LOD_DIST, MD.DEFAULT_LOD_DIST))
-    # the material table lists what the meshes use and nothing else (the stored table of an imported model only gives the order)
-    if all(0 <= p.material < len(materials) for p in parts):
-        used = sorted({p.material for p in parts})
-        new_index = {o: n for n, o in enumerate(used)}
-        materials = [materials[o] for o in used]
-        for p in parts:
-            p.material = new_index[p.material]
+    # the stored table is written as is, new hashes only appended: cutscene heads address materials by index
+    # (cs_pl0600 face vanished when its material moved from 8 to 0), and unused hashes are tolerated in game
     if len(materials) > MAX_MATERIALS_TOTAL:
         add_error(errors, 'TotalMaterialsExceeded')
         raise ExportError(errors)
