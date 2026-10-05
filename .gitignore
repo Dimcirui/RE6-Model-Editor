@@ -1,0 +1,18 @@
+# whitelist: only the add-on, its docs and the licenses are published
+/*
+!/.gitignore
+!/re6_model_editor/
+!/docs/
+!/README.md
+!/LICENSE
+!/LICENSES/
+!/NOTICE.md
+
+__pycache__/
+*.pyc
+*.pyo
+
+# notes with local paths
+/docs/PLAN_MHWME_BEHAVIOR_AUDIT.md
+/docs/MHW_RE_METHODS.md
+/docs/LMT_BLINK.md

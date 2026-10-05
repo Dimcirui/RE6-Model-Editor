@@ -1,0 +1,22 @@
+schema_version = "1.0.0"
+
+id = "re6_model_editor"
+version = "0.3.0"
+name = "RE6 Model Editor"
+tagline = "Import and export Resident Evil 6 .mod, .mrl, .tex, .ctc, .ccl"
+maintainer = "Dimcirui"
+type = "add-on"
+
+tags = ["Import-Export", "Mesh", "Material"]
+
+blender_version_min = "4.2.0"
+
+license = [
+    "SPDX:GPL-3.0-or-later",
+]
+copyright = [
+    "2026 Dimcirui",
+]
+
+[permissions]
+files = "Read game .arc archives and model files, write exported models and settings"
